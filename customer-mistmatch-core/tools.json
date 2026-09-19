@@ -1,0 +1,83 @@
+{
+  "tools": [
+    {
+      "name": "list_held_shipments",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "list_held_shipments"
+    },
+    {
+      "name": "get_shipment_file",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "get_shipment_file"
+    },
+    {
+      "name": "get_flagged_document",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "get_flagged_document"
+    },
+    {
+      "name": "get_customs_ruleset",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "get_customs_ruleset"
+    },
+    {
+      "name": "check_mismatch_pattern",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "check_mismatch_pattern"
+    },
+    {
+      "name": "draft_corrected_document",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "draft_corrected_document"
+    },
+    {
+      "name": "validate_against_ruleset",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "validate_against_ruleset"
+    },
+    {
+      "name": "resubmit_to_customs",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "resubmit_to_customs"
+    },
+    {
+      "name": "post_decision_receipt",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "post_decision_receipt"
+    },
+    {
+      "name": "mark_hold_resolved",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "mark_hold_resolved"
+    },
+    {
+      "name": "reset_mock_data",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "Customs Mismatch Resolver (Mock)",
+      "display_name": "reset_mock_data"
+    }
+  ],
+  "interrupt_config": {
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::list_held_shipments::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_shipment_file::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_flagged_document::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_customs_ruleset::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::check_mismatch_pattern::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::draft_corrected_document::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::validate_against_ruleset::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::resubmit_to_customs::Customs Mismatch Resolver (Mock)": true,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::post_decision_receipt::Customs Mismatch Resolver (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::mark_hold_resolved::Customs Mismatch Resolver (Mock)": true,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::reset_mock_data::Customs Mismatch Resolver (Mock)": false
+  }
+}

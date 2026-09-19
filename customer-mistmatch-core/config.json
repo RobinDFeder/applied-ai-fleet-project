@@ -1,0 +1,6 @@
+{
+  "name": "Customs Mismatch Resolver",
+  "description": "Detects shipments held at customs for a document mismatch, diagnoses the failing rule against the live jurisdiction ruleset, drafts a correction, and either auto-resubmits (low-value, known-safe pattern, high confidence) or escalates to #customs-holds in Slack for human approval with a full decision receipt.",
+  "visibility_scope": "tenant",
+  "triggers_paused": false
+}
