@@ -19,4 +19,4 @@ cd ledgerloop-core && pip install -r requirements.txt && python server.py --http
 ```
 Deployed on Render (root directory `ledgerloop-core`, start `python server.py --http`): `https://applied-ai-fleet-project.onrender.com/mcp`.
 
-Module 1 (customs mismatch resolver) is preserved on `main` and tag `module-1-submission`.
+Module 1 (customs mismatch resolver) is preserved on `main`.
