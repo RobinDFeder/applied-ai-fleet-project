@@ -1,0 +1,6 @@
+{
+  "name": "LedgerLoop - Data Reliability Teammate",
+  "description": "Always-on teammate for a fintech data-engineering team. Watches payment/ledger pipelines, diagnoses incidents (late files, duplicate events, reconciliation breaks, schema drift, DQ spikes), auto-fixes only known-safe reversible low-value cases, and escalates everything else in Slack to the right named human (data engineer, finance ops, compliance) with a decision receipt. Reviews its own scorecard weekly to hill-climb.",
+  "visibility_scope": "tenant",
+  "triggers_paused": false
+}

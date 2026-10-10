@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box}
+body{margin:0;width:240mm;padding:9mm 11mm;font:7.9pt/1.32 Helvetica,Arial,sans-serif;color:#1c2330}
+h1{font-size:16pt;margin:0 0 1px;color:#2d1b5e}
+.sub{color:#555;margin-bottom:5px;font-size:8.2pt}
+h2{font-size:9pt;margin:7px 0 3px;color:#2d1b5e;border-bottom:1px solid #d6d0e8;padding-bottom:1px;text-transform:uppercase;letter-spacing:.4px}
+table{border-collapse:collapse;width:100%}
+td,th{border:1px solid #ddd;padding:2px 4px;vertical-align:top;text-align:left}
+th{background:#f1eefa}
+.two{display:flex;gap:8px}.two>div{flex:1}
+.small{font-size:6.8pt;color:#555}
+b{color:#2d1b5e}
+</style></head><body>
+<h1>LedgerLoop: a multiplayer data-reliability teammate for fintech</h1>
+<div class="sub">Module 2 (weeks 4-6) · Applied AI for Entrepreneurs · Robin Feder · Fleet agent run as a Slack teammate on LangSmith Fleet</div>
+
+<h2>1. Concept</h2>
+<p style="margin:0">Fintech data teams lose hours to payment-pipeline incidents: late PSP files, Kafka replays that duplicate transactions, PSP-vs-ledger reconciliation breaks, schema drift, DQ spikes.
+<b>LedgerLoop</b> is an always-on agent teammate in the team's Slack channel. It handles the routine, reversible, low-value cases itself and routes every judgment call to the right <i>named human</i>
+(data engineer, finance ops, compliance) with a decision receipt. YC's "multiplayer" thesis: the winning work tool is shared by humans and agents in one channel, not a private chatbot.
+Business model: usage-based pricing per resolved incident; moat = a private eval set and pattern library that improve with every incident.</p>
+
+<h2>2. Architecture (high level)</h2>
+<svg viewBox="0 0 700 262" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica,Arial,sans-serif" font-size="9.5">
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7z" fill="#2d1b5e"/></marker></defs>
+<style>.b{fill:#f1eefa;stroke:#2d1b5e;stroke-width:1.2}.g{fill:#e8f4ec;stroke:#2e7d4f;stroke-width:1.2}.o{fill:#fff4e5;stroke:#c77700;stroke-width:1.2}.r{fill:#fdecec;stroke:#b3261e;stroke-width:1.2}.l{stroke:#2d1b5e;stroke-width:1.2;fill:none;marker-end:url(#a)}.t{fill:#1c2330}.s{font-size:8px;fill:#555}</style>
+<!-- triggers -->
+<rect class="o" x="5" y="8" width="150" height="62" rx="6"/><text class="t" x="12" y="23" font-weight="bold">Triggers</text>
+<text class="t" x="12" y="37">@mention / alert post</text><text class="t" x="12" y="50">Daily sweep Mon-Fri 07:00</text><text class="t" x="12" y="63">Weekly review Mon 09:00</text>
+<!-- slack -->
+<rect class="b" x="5" y="92" width="150" height="86" rx="6"/><text class="t" x="12" y="107" font-weight="bold">Slack channel (shared)</text>
+<text class="t" x="12" y="121">Humans: Data eng on-call,</text><text class="t" x="12" y="133">Finance ops, Compliance</text><text class="t" x="12" y="147">+ @LedgerLoop teammate</text><text class="s" x="12" y="164">threads, approvals, receipts</text>
+<!-- agent -->
+<rect class="b" x="215" y="40" width="200" height="150" rx="6"/><text class="t" x="223" y="56" font-weight="bold">Fleet agent (harness)</text>
+<text class="t" x="223" y="71">AGENTS.md: goal, tiers, constraints</text><text class="t" x="223" y="84">SKILL.md: pattern library + rubric</text>
+<text class="t" x="223" y="97">config.json / tools.json</text>
+<text class="s" x="223" y="113">Hats: Triage · Recon · Schema ·</text><text class="s" x="223" y="124">Quality · Scribe</text>
+<rect class="g" x="225" y="134" width="85" height="46" rx="4"/><text class="t" x="231" y="148" font-weight="bold">AUTO</text><text class="s" x="231" y="160">known-safe, known-safe, &lt;10k EUR,lt;10k EUR</text><text class="s" x="231" y="170">conf ≥0.9, revers.</text>
+<rect class="r" x="318" y="134" width="90" height="46" rx="4"/><text class="t" x="324" y="148" font-weight="bold">ASK / STOP</text><text class="s" x="324" y="160">approval gate; PII =</text><text class="s" x="324" y="170">hard stop, Compliance</text>
+<!-- tools -->
+<rect class="o" x="500" y="8" width="195" height="108" rx="6"/><text class="t" x="507" y="23" font-weight="bold">MCP tools (data platform)</text>
+<text class="t" x="507" y="37">Read: incidents, runs, recon,</text><text class="t" x="507" y="49">table health, schema diff</text><text class="t" x="507" y="63">Dry-run: validate_fix</text>
+<text class="t" x="507" y="77">Auto: rerun_task, quarantine</text><text class="t" x="507" y="91" fill="#b3261e" style="fill:#b3261e">Gated: ledger adjustment,</text><text class="t" x="507" y="102" style="fill:#b3261e">schema mapping</text>
+<rect class="b" x="500" y="128" width="195" height="62" rx="6"/><text class="t" x="507" y="143" font-weight="bold">Shared data foundation</text><text class="s" x="507" y="157">Delta Lake bronze/silver/gold, PSP files,</text><text class="s" x="507" y="168">ledger, incident store = source of truth</text>
+<!-- loop -->
+<rect class="g" x="5" y="212" width="690" height="44" rx="6"/><text class="t" x="12" y="226" font-weight="bold">Hill-climbing loop (LangSmith): </text>
+<text class="t" x="12" y="240">Observe: traces / threads · Evaluate: code evals + LLM-judge "perceived error" + human thumbs · Test: dataset + offline experiment ·</text><text class="t" x="12" y="252">Improve: human-approved edit to AGENTS.md / SKILL.md → Deploy → Monitor (override rate, MTTR, false-auto = 0, credits)</text>
+<path class="l" d="M155 50 L215 80"/><path class="l" d="M155 135 L215 125"/><path class="l" d="M415 100 L500 70"/><path class="l" d="M415 160 L500 160"/>
+<path class="l" d="M110 178 L110 212"/><path class="l" d="M315 190 L315 212"/>
+</svg>
+
+<h2>3. Fleet components (what is in the ZIP)</h2>
+<table><tr><th>File</th><th>Role</th></tr>
+<tr><td>AGENTS.md</td><td>Prompt: desired outcome, team of humans and hats, triggers, operating sequence, tiers, hard constraints, receipt format</td></tr>
+<tr><td>config.json</td><td>Agent metadata (name, description, tenant visibility)</td></tr>
+<tr><td>tools.json</td><td>14 MCP tools; <code>interrupt_config</code> gates <i>propose_ledger_adjustment</i> and <i>apply_schema_mapping</i> behind human approval</td></tr>
+<tr><td>skills/incident-pattern-library/SKILL.md</td><td>Known-safe pattern allowlist, never-auto list, evaluator rubric; agent cannot self-expand it</td></tr></table>
+<div class="small">Channel: same Slack channel as submission 1 (#customs-holds), @mention-triggered. Schedules: weekdays 07:00 and Mondays 09:00 (Europe/Copenhagen). Backend: mock MCP server (in-memory, 5 incidents covering every tier).</div>
+
+<h2>4. Design choices tied to the articles</h2>
+<table><tr><th style="width:23%">Design choice</th><th style="width:27%">Source</th><th>Rationale</th></tr>
+<tr><td>Start from the on-call data engineer role, then add finance ops / compliance owners</td><td>Microsoft Frontier Playbook: <i>Persona Acceleration</i> ("start with the role, not the tool"), named owners</td><td>Map AI to real moments (triage, recon, receipts) instead of "use AI more"; one named owner per decision.</td></tr>
+<tr><td>Redesigned workflow: observe → classify → dry-run → tier → act/ask → receipt</td><td>Microsoft: <i>AI-Powered Process Redesign</i> (human-agent operating model calibrated to stakes; shared data foundation; build for reuse)</td><td>Dropping an agent into the old on-call flow just automates dysfunction; the incident store is the single source of truth, the skill is reusable across pipelines.</td></tr>
+<tr><td>Private evals, pattern library and thresholds owned by us, models swappable</td><td>Microsoft: <i>Law of hill-climbing</i> (evals + context/harness + interchangeable models)</td><td>The moat is the eval set and skill that improve per incident, not the foundation model.</td></tr>
+<tr><td>One manager agent with named hats and a light scaffold; incident store instead of chat memory</td><td>Andon Labs: Pion / Andon Market (manager + @named subagents, light scaffold, memory failures fixed by a dedicated scheduling agent)</td><td>Avoids contradicting or stale actions when context rolls over; hats keep roles clear without heavy orchestration.</td></tr>
+<tr><td>Honesty rule: flag credits/duplicates in our favour; hard constraints; approval gates; Compliance hard-stop</td><td>Andon Labs: Vending-Bench post (models kept duplicate shipments, exploited seller mistakes, refused refunds)</td><td>Fintech has the same temptation (double PSP credits). We evaluate honesty explicitly and gate irreversible money actions.</td></tr>
+<tr><td>Always-on role in Slack, daily + weekly schedules, role-specific scope, usage-based pricing</td><td>Gumloop (role templates, credits pricing, Slack agents); OpenAI "Introducing dots" (always-on, shared context, eats salary pool)</td><td>Charge per resolved incident (usage), not per seat; Slack is the collaboration layer with shared context.</td></tr>
+<tr><td>Traces, code evaluators, LLM-judge "perceived error", dataset, offline experiment before changing prompts</td><td>LangChain: Agent Development Lifecycle; LangSmith Essentials (traces/threads, datasets, evaluators, before/after experiments)</td><td>Observe + evaluate steps turn every incident into a test case; changes ship only if evals improve.</td></tr>
+<tr><td>Agent is a teammate in the shared channel, not a private bot</td><td>YC (A. Epstein): "best work tools won by going multiplayer"</td><td>Humans and agent share context, approvals and receipts in one thread.</td></tr></table>
+
+<h2>5. Risks and next steps</h2>
+<div class="two"><div><b>Risks:</b> mock data only; thresholds (EUR 10k, 0.90) are assumptions to tune from the weekly scorecard; LLM-judge needs human calibration labels; real PSP/ledger access needs compliance review.</div>
+<div><b>Next:</b> replace mock MCP with Databricks/Airflow + PSP APIs, build 30-case regression dataset from first month of receipts, grow autonomy only where false-auto = 0 for 4 weeks.</div></div>
+<div class="small" style="margin-top:4px">Sources: blogs.microsoft.com/blog/2026/09/17/what-weve-learned-from-microsofts-own-ai-transformation · andonlabs.com/pion, /market, /blog/opus-5-5-gpt-6-sol-grok-4-7-vending-bench · x.com/gumloop/status/2089816357470925032, gumloop.com/use-cases · openai.com/index/introducing-dots · langchain.com/blog/the-agent-development-lifecycle · academy.langchain.com/courses/quickstart-langsmith-essentials · x.com/aaron_epstein/status/2083304434432622887</div>
+</body></html>

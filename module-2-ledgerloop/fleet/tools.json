@@ -1,0 +1,104 @@
+{
+  "tools": [
+    {
+      "name": "list_open_incidents",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "list_open_incidents"
+    },
+    {
+      "name": "get_incident",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "get_incident"
+    },
+    {
+      "name": "get_pipeline_run",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "get_pipeline_run"
+    },
+    {
+      "name": "get_reconciliation_report",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "get_reconciliation_report"
+    },
+    {
+      "name": "get_table_health",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "get_table_health"
+    },
+    {
+      "name": "get_schema_diff",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "get_schema_diff"
+    },
+    {
+      "name": "validate_fix",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "validate_fix"
+    },
+    {
+      "name": "rerun_pipeline_task",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "rerun_pipeline_task"
+    },
+    {
+      "name": "quarantine_records",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "quarantine_records"
+    },
+    {
+      "name": "propose_ledger_adjustment",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "propose_ledger_adjustment"
+    },
+    {
+      "name": "apply_schema_mapping",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "apply_schema_mapping"
+    },
+    {
+      "name": "post_incident_receipt",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "post_incident_receipt"
+    },
+    {
+      "name": "get_weekly_scorecard",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "get_weekly_scorecard"
+    },
+    {
+      "name": "reset_mock_data",
+      "mcp_server_url": "https://YOUR-DEPLOYED-MCP-URL/mcp",
+      "mcp_server_name": "LedgerLoop Data Platform (Mock)",
+      "display_name": "reset_mock_data"
+    }
+  ],
+  "interrupt_config": {
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::list_open_incidents::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_incident::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_pipeline_run::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_reconciliation_report::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_table_health::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_schema_diff::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::validate_fix::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::rerun_pipeline_task::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::quarantine_records::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::propose_ledger_adjustment::LedgerLoop Data Platform (Mock)": true,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::apply_schema_mapping::LedgerLoop Data Platform (Mock)": true,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::post_incident_receipt::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::get_weekly_scorecard::LedgerLoop Data Platform (Mock)": false,
+    "https://YOUR-DEPLOYED-MCP-URL/mcp::reset_mock_data::LedgerLoop Data Platform (Mock)": false
+  }
+}
