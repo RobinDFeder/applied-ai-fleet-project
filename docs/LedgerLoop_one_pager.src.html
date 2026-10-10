@@ -56,7 +56,7 @@ Business model: usage-based pricing per resolved incident; moat = a private eval
 <tr><td>config.json</td><td>Agent metadata (name, description, tenant visibility)</td></tr>
 <tr><td>tools.json</td><td>14 MCP tools; <code>interrupt_config</code> gates <i>propose_ledger_adjustment</i> and <i>apply_schema_mapping</i> behind human approval</td></tr>
 <tr><td>skills/incident-pattern-library/SKILL.md</td><td>Known-safe pattern allowlist, never-auto list, evaluator rubric; agent cannot self-expand it</td></tr></table>
-<div class="small">Channel: same Slack channel as submission 1 (#customs-holds), @mention-triggered. Schedules: weekdays 07:00 and Mondays 09:00 (Europe/Copenhagen). Backend: mock MCP server (in-memory, 5 incidents covering every tier).</div>
+<div class="small">Channel: same Slack channel as submission 1 (#customs-holds), @mention-triggered. Schedules: weekdays 07:00 and Mondays 09:00 (Europe/Copenhagen). Backend: MCP server on Render (applied-ai-fleet-project.onrender.com/mcp), simulated in-memory incidents covering every tier.</div>
 
 <h2>4. Design choices tied to the articles</h2>
 <table><tr><th style="width:23%">Design choice</th><th style="width:27%">Source</th><th>Rationale</th></tr>
@@ -70,7 +70,7 @@ Business model: usage-based pricing per resolved incident; moat = a private eval
 <tr><td>Agent is a teammate in the shared channel, not a private bot</td><td>YC (A. Epstein): "best work tools won by going multiplayer"</td><td>Humans and agent share context, approvals and receipts in one thread.</td></tr></table>
 
 <h2>5. Risks and next steps</h2>
-<div class="two"><div><b>Risks:</b> mock data only; thresholds (EUR 10k, 0.90) are assumptions to tune from the weekly scorecard; LLM-judge needs human calibration labels; real PSP/ledger access needs compliance review.</div>
-<div><b>Next:</b> replace mock MCP with Databricks/Airflow + PSP APIs, build 30-case regression dataset from first month of receipts, grow autonomy only where false-auto = 0 for 4 weeks.</div></div>
+<div class="two"><div><b>Risks:</b> simulated incident data; thresholds (EUR 10k, 0.90) are assumptions to tune from the weekly scorecard; LLM-judge needs human calibration labels; real PSP/ledger access needs compliance review.</div>
+<div><b>Next:</b> swap the simulated data for Databricks/Airflow + PSP APIs, build 30-case regression dataset from first month of receipts, grow autonomy only where false-auto = 0 for 4 weeks.</div></div>
 <div class="small" style="margin-top:4px">Sources: blogs.microsoft.com/blog/2026/09/17/what-weve-learned-from-microsofts-own-ai-transformation · andonlabs.com/pion, /market, /blog/opus-5-5-gpt-6-sol-grok-4-7-vending-bench · x.com/gumloop/status/2089816357470925032, gumloop.com/use-cases · openai.com/index/introducing-dots · langchain.com/blog/the-agent-development-lifecycle · academy.langchain.com/courses/quickstart-langsmith-essentials · x.com/aaron_epstein/status/2083304434432622887</div>
 </body></html>

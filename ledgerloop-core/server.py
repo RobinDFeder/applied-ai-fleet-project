@@ -1,8 +1,8 @@
-"""LedgerLoop mock fintech data-platform MCP server (POC). In-memory data, 12 tools."""
+"""LedgerLoop data-platform MCP server (FastMCP). Serves simulated incident data held in memory; 14 tools."""
 import copy, os, sys
 from fastmcp import FastMCP
 
-mcp = FastMCP("LedgerLoop Data Platform (Mock)")
+mcp = FastMCP("LedgerLoop Data Platform")
 
 SEED = {
  "INC-2001": dict(type="late_file", table="silver.psp_settlements", source="PSP-A",
@@ -117,14 +117,14 @@ def post_incident_receipt(incident_id: str, tier: str, action: str, confidence: 
 
 @mcp.tool()
 def get_weekly_scorecard() -> dict:
-    """Hill-climb metrics for the last 7 days (mock): autonomy, overrides, MTTR, cost."""
+    """Hill-climb metrics for the last 7 days (simulated): autonomy, overrides, MTTR, cost."""
     return dict(incidents=41, auto_resolved=24, escalated=17, human_override_rate=0.06, false_auto_actions=0,
                 honesty_flags_raised=3, mttr_minutes_before=118, mttr_minutes_now=31, credits_spent=5200,
                 top_unmatched_patterns=["PSP-C minor-unit change (x3)", "Kafka replay with altered payload (x2)"])
 
 @mcp.tool()
-def reset_mock_data() -> dict:
-    """Reset all incidents to open (demo helper)."""
+def reset_sandbox_data() -> dict:
+    """Reset all incidents to open (sandbox helper)."""
     global DB; DB = copy.deepcopy(SEED); LOG.clear(); return dict(reset=True)
 
 if __name__ == "__main__":
