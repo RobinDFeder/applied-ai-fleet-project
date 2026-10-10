@@ -56,7 +56,7 @@ Business model: usage-based pricing per resolved incident; moat = a private eval
 <tr><td>config.json</td><td>Agent metadata (name, description, tenant visibility)</td></tr>
 <tr><td>tools.json</td><td>14 MCP tools; <code>interrupt_config</code> gates <i>propose_ledger_adjustment</i> and <i>apply_schema_mapping</i> behind human approval</td></tr>
 <tr><td>skills/incident-pattern-library/SKILL.md</td><td>Known-safe pattern allowlist, never-auto list, evaluator rubric; agent cannot self-expand it</td></tr></table>
-<div class="small">Channel: same Slack channel as submission 1 (#customs-holds), @mention-triggered. Schedules: weekdays 07:00 and Mondays 09:00 (Europe/Copenhagen). Backend: MCP server on Render (applied-ai-fleet-project.onrender.com/mcp), simulated in-memory incidents covering every tier.</div>
+<div class="small">Channel: same Slack channel as submission 1 (#customs-holds), @mention-triggered. Schedules: weekdays 07:00 and Mondays 09:00 (Europe/Copenhagen). Backend: MCP server (FastMCP) with simulated in-memory incidents covering every tier; deployment target: Render (applied-ai-fleet-project.onrender.com/mcp).</div>
 
 <h2>4. Design choices tied to the articles</h2>
 <table><tr><th style="width:23%">Design choice</th><th style="width:27%">Source</th><th>Rationale</th></tr>
